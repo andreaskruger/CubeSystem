@@ -7,9 +7,14 @@ void setup(void) {
   Serial.begin(115200);
   while (!Serial)
     delay(10); // will pause Zero, Leonardo, etc until serial console opens
+  init_ESC();
+  init_IMU();
+  Serial.println("Setup complete!");
+  delay(1000);
 }
 
 
 void loop() {
-  ESC_speed(1, readIMU());
+  Serial.println((1, readIMU()));
+
 }
