@@ -1,5 +1,7 @@
 #include <Arduino.h>
 #include <ESP32Servo.h>
+#include <hallSensor.h>
+#include <PID.h>
 
 #define ESC_pin1 13
 #define ESC_pin2 13
@@ -32,9 +34,9 @@ void init_ESC(){
 void ESC_speed(int ESC, float speed){
     if(speed > 130 && speed > 90){speed = 130;}
     if(speed > 50 && speed <90){speed = 40;}
-    if(ESC == 1){esc1.write(speed);}
-    if(ESC == 2){esc2.write(speed);}
-    if(ESC == 3){esc3.write(speed);}
+    if(ESC == 32){esc1.write(PID_speed(speed,getCurrentSpeed()));}
+    if(ESC == 33){esc2.write(PID_speed(speed,getCurrentSpeed()));}
+    if(ESC == 34){esc3.write(PID_speed(speed,getCurrentSpeed()));}
 }
 
 void ESC_stop(){

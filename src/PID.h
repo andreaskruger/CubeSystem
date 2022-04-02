@@ -10,9 +10,32 @@ double lastError = 0;
 double eTime = 0;
 double cum = 0;
 
-int baseLineAngle = 0.9;
+int baseLineAngle = 1;
 
-float PID_speed(float angle){
+
+double kp_speed = 0.3;
+double kd_speed = 0;
+double ki_speed = 0;
+
+double currentPIDTime_speed = 0;
+double lastTime_speed = 0;
+double lastError_speed = 0;
+double eTime_speed = 0;
+double cum_speed = 0;
+
+
+float PID_speed(float speed, float currentSpeed){
+    float newSpeed;
+    int error = speed - currentSpeed;
+    currentPIDTime_speed = millis();
+    eTime = currentPIDTime_speed - lastTime_speed;
+    cum += error*eTime_speed;
+    newSpeed = kp_speed * error + kd_speed * ((error-lastError_speed)/eTime_speed) + ki_speed * cum_speed;
+    lastError_speed = error;
+    lastTime_speed = currentPIDTime_speed;
+    return newSpeed;
+}
+float PID_angle(float angle){
     float speed;
     int error = angle - baseLineAngle;
     currentPIDTime = millis();

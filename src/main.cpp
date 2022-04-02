@@ -1,6 +1,5 @@
 #include <Arduino.h>
 #include <rawIMU.h>
-#include <PID.h>
 #include <ESP32Servo.h>
 #include <ESC_control.h>
 
@@ -20,7 +19,7 @@ void controlMotorMain(int pin){
   pitch = getPitch();
   roll = getRoll();
   yaw = getYaw();
-  ESC_speed(pin,PID_speed(pitch));
+  ESC_speed(pin,PID_angle(pitch));
   digitalWrite(pin, HIGH);
 }
 
