@@ -3,12 +3,12 @@
 #include <hallSensor.h>
 #include <PID.h>
 
-#define ESC_pin1 13
-#define ESC_pin2 13
-#define ESC_pin3 13
+#define ESC_pin1 32
+#define ESC_pin2 32
+#define ESC_pin3 32
 
 #define MIN_SPEED 1000
-#define MAX_SPEED 20000
+#define MAX_SPEED 2000
 #define MID_STOP 1500
 
 Servo esc1;
@@ -34,9 +34,9 @@ void init_ESC(){
 void ESC_speed(int ESC, float speed){
     if(speed > 130 && speed > 90){speed = 130;}
     if(speed > 50 && speed <90){speed = 40;}
-    if(ESC == 32){esc1.write(PID_speed(speed,getCurrentSpeed()));}
-    if(ESC == 33){esc2.write(PID_speed(speed,getCurrentSpeed()));}
-    if(ESC == 34){esc3.write(PID_speed(speed,getCurrentSpeed()));}
+    if(ESC == 32){esc1.write(1);}
+    if(ESC == 33){esc2.write(1);}
+    if(ESC == 34){esc3.write(1);}
 }
 
 void ESC_stop(){
