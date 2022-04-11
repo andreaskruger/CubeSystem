@@ -19,17 +19,16 @@ void setup(){
   while (!Serial){delay(10); }
 
   init_scanner();
-  scan_I2C();
-
+  init_IMU();
   pinMode(IMU_pin_1,OUTPUT);
   pinMode(IMU_pin_2,OUTPUT);
   pinMode(IMU_pin_3,OUTPUT);
-  digitalWrite(IMU_pin_1,LOW);
+  digitalWrite(IMU_pin_1,HIGH);
   digitalWrite(IMU_pin_2,HIGH);
   digitalWrite(IMU_pin_3,HIGH);
   //init_ESC();
   //delay(3000);
-  init_IMU();
+  
 
 
 }
