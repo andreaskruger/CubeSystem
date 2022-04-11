@@ -9,9 +9,9 @@
 #define IMU_pin_3 34
 
 void controlMotorMain(int pin){
-  if(pin == 32){PID_speed(PID_angle(yaw[0]),getCurrentSpeed());}
-  if(pin == 33){PID_speed(PID_angle(pitch[1]),getCurrentSpeed());}
-  if(pin == 34){PID_speed(PID_angle(roll[2]),getCurrentSpeed());}
+  if(pin == 32){Serial.println(PID_speed(PID_angle(yaw[0]),getCurrentSpeed()));}
+  if(pin == 33){Serial.println(PID_speed(PID_angle(pitch[1]),getCurrentSpeed()));}
+  if(pin == 34){Serial.println(PID_speed(PID_angle(roll[2]),getCurrentSpeed()));}
 }
 
 void setup(){
@@ -28,20 +28,18 @@ void setup(){
   digitalWrite(IMU_pin_3,HIGH);
   //init_ESC();
   //delay(3000);
-  
-
-
 }
 
 void loop(){
-  Serial.println("Loop");
+  /*Serial.println("Loop");
   readIMU();
+
   Serial.print("Yaw1: ");
   Serial.println(yaw[0]);
   Serial.print("Yaw2: ");
   Serial.println(yaw[1]);
   Serial.print("Yaw3: ");
-  Serial.println(yaw[2]);
+  Serial.println(yaw[2]);*/
   //controlMotorMain(32);
   //controlMotorMain(33);
   //controlMotorMain(34);

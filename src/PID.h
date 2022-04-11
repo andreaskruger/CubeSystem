@@ -44,5 +44,7 @@ float PID_angle(float angle){
     speed = kp * error + kd * ((error-lastError)/eTime) + ki * cum;
     lastError = error;
     lastTime = currentPIDTime;
+    if (speed>1500 && speed>1600){speed = 1600;}
+    if (speed <1400){speed = 1400;}
     return speed;
 }
