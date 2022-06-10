@@ -110,7 +110,6 @@
                 "C:/Users/andre/.platformio/packages/framework-arduinoespressif32/libraries/WiFi/src",
                 "C:/Users/andre/.platformio/packages/framework-arduinoespressif32/libraries/WiFiClientSecure/src",
                 "C:/Users/andre/.platformio/packages/framework-arduinoespressif32/libraries/WiFiProv/src",
-                "C:/Users/andre/.platformio/packages/tool-unity",
                 ""
             ],
             "browse": {
@@ -218,12 +217,11 @@
                     "C:/Users/andre/.platformio/packages/framework-arduinoespressif32/libraries/WiFi/src",
                     "C:/Users/andre/.platformio/packages/framework-arduinoespressif32/libraries/WiFiClientSecure/src",
                     "C:/Users/andre/.platformio/packages/framework-arduinoespressif32/libraries/WiFiProv/src",
-                    "C:/Users/andre/.platformio/packages/tool-unity",
                     ""
                 ]
             },
             "defines": [
-                "PLATFORMIO=50205",
+                "PLATFORMIO=60002",
                 "ARDUINO_LOLIN32",
                 "ESP32",
                 "ESP_PLATFORM",
