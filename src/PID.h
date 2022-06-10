@@ -1,6 +1,6 @@
 #include <Arduino.h>
 
-double kp = 0.3;
+double kp = 1;
 double kd = 0;
 double ki = 0;
 
@@ -10,10 +10,10 @@ double lastError = 0;
 double eTime = 0;
 double cum = 0;
 
-int baseLineAngle = 1;
+int baseLineAngle = 0;
 
 
-double kp_speed = 0.3;
+double kp_speed = 1;
 double kd_speed = 0;
 double ki_speed = 0;
 
@@ -44,7 +44,5 @@ float PID_angle(float angle){
     speed = kp * error + kd * ((error-lastError)/eTime) + ki * cum;
     lastError = error;
     lastTime = currentPIDTime;
-    if (speed>1500 && speed>1600){speed = 1600;}
-    if (speed <1400){speed = 1400;}
     return speed;
 }

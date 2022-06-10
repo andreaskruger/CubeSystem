@@ -3,9 +3,9 @@
 #include <hallSensor.h>
 #include <PID.h>
 
-#define ESC_pin1 32
-#define ESC_pin2 32
-#define ESC_pin3 32
+#define ESC_pin1 35
+#define ESC_pin2 35
+#define ESC_pin3 35
 
 #define MIN_SPEED 1000
 #define MAX_SPEED 2000
@@ -15,7 +15,7 @@ Servo esc1;
 Servo esc2;
 Servo esc3;
 
-
+int microSpeed
 
 void init_ESC(){
     ESP32PWM::allocateTimer(0);
@@ -32,15 +32,21 @@ void init_ESC(){
 }
 
 void ESC_speed(int ESC, float speed){
-    if(speed > 130 && speed > 90){speed = 130;}
-    if(speed > 50 && speed <90){speed = 40;}
-    if(ESC == 32){esc1.write(1);}
-    if(ESC == 33){esc2.write(1);}
-    if(ESC == 34){esc3.write(1);}
+    if (speed < 0){
+        speed = -1*speed;
+        speedMicro = MID_STOP - speed;
+    }
+    if(speed>0){
+        speedMicro = MID_STOP + speed;
+    }
+    
+    if(ESC == 35){esc1.writeMicroseconds(speedMicro);}
+    if(ESC == 35){esc2.writeMicroseconds(speedMicro);}
+    if(ESC == 35){esc3.writeMicroseconds(speedMicro);}
 }
 
 void ESC_stop(){
-    esc1.write(90);
-    esc2.write(90);
-    esc3.write(90);
+    esc1.writeMicroseconds(MID_STOP);
+    esc2.writeMicroseconds(MID_STOP);
+    esc3.writeMicroseconds(MID_STOP);
 }

@@ -9,7 +9,8 @@
 #define IMU_pin_3 34
 Servo esc;
 
-void controlMotorMain(int pin){
+void controlMotorMain(int pin,float angle){
+  ESC_speed(pin, PID_angle(angle));
 }
 
 void setup(){
@@ -32,15 +33,14 @@ void setup(){
 }
 
 void loop(){
-  //Serial.println("Loop");
-  /*for (int i = 0; i < 2000; i++)
-  {
-    Serial.println(i);
-    esc.writeMicroseconds(1000+i);
-    delay(100);
-  }*/
-  
   readIMU();
+  //controlMotorMain(35,yaw);
+  //controlMotorMain(36,roll2);
+  Serial.print("PID yaw1: ");
+  Serial.print(yaw);
+  Serial.print("          Speed:");
+  Serial.println(PID_angle(yaw));
+/*
   Serial.print("Yaw1: ");
   Serial.print(yaw);
   Serial.print("       Yaw2: ");
@@ -52,9 +52,7 @@ void loop(){
   Serial.print("       Roll: ");
   Serial.print(roll);
   Serial.print("       Roll2: ");
-  Serial.println(roll2);
+  Serial.println(roll2);*/
   delay(200);
-  //controlMotorMain(32);
-  //controlMotorMain(33);
-  //controlMotorMain(34);
+
 }
