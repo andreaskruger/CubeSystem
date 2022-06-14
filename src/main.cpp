@@ -3,10 +3,11 @@
 #include <ESP32Servo.h>
 #include <ESC_control.h>
 #include <I2C_SCANNER.h>
+#include <wifi_com.h>
 
-#define IMU_pin_1 32
-#define IMU_pin_2 33
-#define IMU_pin_3 34
+#define IMU_pin_1 33
+#define IMU_pin_2 34
+#define IMU_pin_3 35
 Servo esc;
 
 void controlMotorMain(int pin,float angle){
@@ -33,26 +34,27 @@ void setup(){
 }
 
 void loop(){
-  readIMU();
-  //controlMotorMain(35,yaw);
-  //controlMotorMain(36,roll2);
-  Serial.print("PID yaw1: ");
-  Serial.print(yaw);
-  Serial.print("          Speed:");
-  Serial.println(PID_angle(yaw));
-/*
-  Serial.print("Yaw1: ");
-  Serial.print(yaw);
-  Serial.print("       Yaw2: ");
-  Serial.print(yaw2);
-  Serial.print("       Pitch1: ");
-  Serial.print(pitch);
-  Serial.print("       pitch2: ");
-  Serial.print(pitch2);
-  Serial.print("       Roll: ");
-  Serial.print(roll);
-  Serial.print("       Roll2: ");
-  Serial.println(roll2);*/
-  delay(200);
-
+  while(interupt_state1){
+    readIMU();
+    //controlMotorMain(35,yaw);
+    //controlMotorMain(36,roll2);
+    Serial.print("PID yaw1: ");
+    Serial.print(yaw);
+    Serial.print("          Speed:");
+    Serial.println(PID_angle(yaw));
+  /*
+    Serial.print("Yaw1: ");
+    Serial.print(yaw);
+    Serial.print("       Yaw2: ");
+    Serial.print(yaw2);
+    Serial.print("       Pitch1: ");
+    Serial.print(pitch);
+    Serial.print("       pitch2: ");
+    Serial.print(pitch2);
+    Serial.print("       Roll: ");
+    Serial.print(roll);
+    Serial.print("       Roll2: ");
+    Serial.println(roll2);*/
+    delay(200);
+  }
 }

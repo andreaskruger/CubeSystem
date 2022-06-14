@@ -3,9 +3,9 @@
 #include "MPU6050_6Axis_MotionApps20.h"
 #include <cmath>
 
-#define IMU_pin_1 32
-#define IMU_pin_2 33
-#define IMU_pin_3 34
+#define IMU_pin_1 33
+#define IMU_pin_2 34
+#define IMU_pin_3 35
 
 //IMU 1
 bool dmpReady = false;  // set true if DMP init was successful
