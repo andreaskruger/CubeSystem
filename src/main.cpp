@@ -34,7 +34,7 @@ void setup(){
 }
 
 void loop(){
-  while(interupt_state1){
+  if(!interupt_state1){
     readIMU();
     //controlMotorMain(35,yaw);
     //controlMotorMain(36,roll2);
@@ -56,5 +56,5 @@ void loop(){
     Serial.print("       Roll2: ");
     Serial.println(roll2);*/
     delay(200);
-  }
+  }else if(interupt_state1){ESC_stop();}
 }
